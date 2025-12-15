@@ -10,7 +10,7 @@ JavaScript에서 문자열을 숫자로 변환하는 방법은 여러 가지가 
 
 ## 기본 사용법
 
-```javascript
+```js
 Number("123");    // 123
 parseInt("123");  // 123
 ```
@@ -23,7 +23,7 @@ parseInt("123");  // 123
 
 가장 큰 차이점은 문자열의 일부만 숫자인 경우입니다.
 
-```javascript
+```js
 Number("123abc");    // NaN
 parseInt("123abc");  // 123
 ```
@@ -33,7 +33,7 @@ parseInt("123abc");  // 123
 
 ### 2. 빈 문자열과 공백
 
-```javascript
+```js
 Number("");         // 0
 parseInt("");       // NaN
 
@@ -48,7 +48,7 @@ parseInt("   ");    // NaN
 
 `parseInt()`는 두 번째 인자로 진법을 지정할 수 있습니다.
 
-```javascript
+```js
 parseInt("10", 2);   // 2 (2진법)
 parseInt("10", 8);   // 8 (8진법)
 parseInt("10", 10);  // 10 (10진법)
@@ -61,7 +61,7 @@ parseInt("FF", 16);  // 255
 
 ### 4. 소수점 처리
 
-```javascript
+```js
 Number("123.45");    // 123.45
 parseInt("123.45");  // 123
 ```
@@ -71,13 +71,13 @@ parseInt("123.45");  // 123
 
 소수점을 포함한 파싱이 필요하다면 `parseFloat()`를 사용해야 합니다.
 
-```javascript
+```js
 parseFloat("123.45");  // 123.45
 ```
 
 ### 5. 특수 값 처리
 
-```javascript
+```js
 Number(null);        // 0
 parseInt(null);      // NaN
 
@@ -90,7 +90,7 @@ parseInt(true);      // NaN
 
 ### 6. 16진수 표기법
 
-```javascript
+```js
 Number("0x10");      // 16
 parseInt("0x10");    // 16
 parseInt("0x10", 16); // 16
@@ -108,7 +108,7 @@ parseInt("0x10", 10); // 0 (10진법으로 파싱 시도하므로)
 - 불린 값이나 null을 숫자로 변환할 때
 - 더 엄격한 파싱이 필요할 때
 
-```javascript
+```js
 const input = "123.45";
 const num = Number(input);
 if (!isNaN(num)) {
@@ -123,7 +123,7 @@ if (!isNaN(num)) {
 - CSS 값 등 "100px"처럼 숫자 뒤에 단위가 붙은 문자열을 파싱할 때
 - 정수만 필요할 때
 
-```javascript
+```js
 const cssWidth = "100px";
 const width = parseInt(cssWidth); // 100
 
@@ -138,13 +138,15 @@ const decimal = parseInt(hexColor, 16); // 255
 ## 베스트 프랙티스
 
 1. **항상 parseInt()의 두 번째 인자(radix)를 명시하세요**
-   ```javascript
+
+   ```js
    parseInt("08", 10);  // 8 (권장)
    parseInt("08");      // 8 (ES5 이후는 안전하지만 명시적이 좋음)
    ```
 
 2. **유효성 검사를 함께 사용하세요**
-   ```javascript
+
+   ```js
    const num = Number(input);
    if (isNaN(num)) {
      console.error("유효하지 않은 숫자입니다");
@@ -152,7 +154,8 @@ const decimal = parseInt(hexColor, 16); // 255
    ```
 
 3. **단항 플러스 연산자(`+`)는 Number()와 동일합니다**
-   ```javascript
+
+   ```js
    +"123"    // 123 (Number("123")와 동일)
    +"123abc" // NaN
    ```

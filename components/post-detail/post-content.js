@@ -42,6 +42,10 @@ export default function PostContent(props) {
     },
     code(code) {
       const { className, children } = code;
+      // Inline code doesn't have a className, only code blocks do
+      if (!className) {
+        return <code>{children}</code>;
+      }
       const language = className.split("-")[1]; // className is something like language-js => We need the "js" part here
       return (
         <SyntaxHighlighter
