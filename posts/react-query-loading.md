@@ -1,7 +1,7 @@
 ---
-title: "react-query-loading"
+title: "react-query Loading"
 date: "2025-12-20"
-image: getting-started-nextjs.png
+image: logo.png
 excerpt: react-query isLoading 과 isPending의 차이
 isFeatured: true
 ---
