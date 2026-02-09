@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import PostContent from "@/components/post-detail/post-content";
-import { getPostData, getPostsFiles } from "@/lib/posts-util";
+import { getPostData, getAllPostsFiles } from "@/lib/posts-util";
 
 export default function PostDetailPage(props) {
   return (
@@ -17,8 +17,9 @@ export default function PostDetailPage(props) {
 
 export function getStaticProps(context) {
   const { params } = context;
+  const { category, slug } = params;
 
-  const post = getPostData(params.slug);
+  const post = getPostData(category, slug);
 
   return {
     props: {
@@ -29,17 +30,17 @@ export function getStaticProps(context) {
 }
 
 export function getStaticPaths() {
-  const postFilenames = getPostsFiles();
+  const allPostsFiles = getAllPostsFiles();
 
-  const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
+  const paths = allPostsFiles.map(({ category, fileName }) => ({
+    params: {
+      category,
+      slug: fileName.replace(/\.md$/, ""),
+    },
+  }));
 
   return {
-    paths: slugs.map((slug) => ({ params: { slug: slug } })),
+    paths,
     fallback: false,
   };
 }
-/*
- paths: [],
-    fallback: true,
-  이렇게 하면 모든 블로그를 그때그때 만듦.
-*/
