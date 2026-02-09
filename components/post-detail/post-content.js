@@ -8,7 +8,7 @@ import classes from "./post-content.module.css";
 
 export default function PostContent(props) {
   const { post } = props;
-  const imagePath = `/images/posts/${post.slug}/${post.image}`;
+  const imagePath = `/images/posts/${post.category}/${post.slug}/${post.image}`;
 
   const customRenderers = {
     // img(image) {
@@ -29,7 +29,7 @@ export default function PostContent(props) {
         return (
           <div className={classes.image}>
             <Image
-              src={`/images/posts/${post.slug}/${image.properties.src}`}
+              src={`/images/posts/${post.category}/${post.slug}/${image.properties.src}`}
               alt={image.properties.alt}
               width={600}
               height={300}
