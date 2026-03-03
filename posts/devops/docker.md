@@ -1,3 +1,11 @@
+---
+title: "Docker 정리1"
+excerpt: 도커 정리
+isFeatured: false
+date: "2026-03-03"
+---
+
+
 
 # Docker란 ? / 컨테이너(Container)란? / 이미지(Image)란?
 
