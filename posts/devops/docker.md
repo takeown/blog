@@ -1,6 +1,7 @@
 ---
 title: "Docker 정리1"
 excerpt: 도커 정리
+image: docker-mark-ocean-blue.png
 isFeatured: false
 date: "2026-03-03"
 ---
